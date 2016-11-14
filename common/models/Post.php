@@ -2,8 +2,8 @@
 
 namespace common\models;
 
+use common\models\base\BaseActiveRecord;
 use Yii;
-use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "{{%post}}".
@@ -17,11 +17,14 @@ use yii\db\ActiveRecord;
  * @property integer $status
  * @property integer $created_at
  * @property integer $updated_at
+ * @property integer $cate_id
+ * @property integer $position
  *
+ * @property Category $cate
  * @property User $user
  * @property PostTags[] $postTags
  */
-class Post extends ActiveRecord
+class Post extends BaseActiveRecord
 {
     const IS_VALID = 2; // 已发布
     const NO_VALID = 1; // 待审核
@@ -41,10 +44,11 @@ class Post extends ActiveRecord
     public function rules()
     {
         return [
-            [['content', 'user_id', 'created_at', 'updated_at'], 'required'],
+            [['content', 'user_id', 'created_at', 'updated_at', 'cate_id'], 'required'],
             [['content'], 'string'],
-            [['user_id', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['user_id', 'status', 'created_at', 'updated_at', 'cate_id', 'position'], 'integer'],
             [['title', 'label_img', 'summary'], 'string', 'max' => 255],
+            [['cate_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['cate_id' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
@@ -64,7 +68,17 @@ class Post extends ActiveRecord
             'status' => 'Status',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
+            'cate_id' => 'Cate ID',
+            'position' => 'Position',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCate()
+    {
+        return $this->hasOne(Category::className(), ['id' => 'cate_id']);
     }
 
     /**

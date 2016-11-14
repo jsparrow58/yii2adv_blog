@@ -2,8 +2,8 @@
 
 namespace common\models;
 
+use common\models\base\BaseActiveRecord;
 use Yii;
-use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "{{%post_tags}}".
@@ -14,7 +14,7 @@ use yii\db\ActiveRecord;
  * @property Post $post
  * @property Tags $tag
  */
-class PostTags extends ActiveRecord
+class PostTags extends BaseActiveRecord
 {
     /**
      * @inheritdoc

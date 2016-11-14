@@ -14,6 +14,7 @@ use backend\models\Base\BaseModel;
 class PostForm extends BaseModel
 {
     public $title;
+    public $cate_id;
     public $content;
     public $label_img;
     public $tags;

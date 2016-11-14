@@ -1,5 +1,6 @@
 <?php
 /* @var $this \yii\web\View */
+use common\widgets\Alert;
 use yii\bootstrap\Html;
 use yii\widgets\Breadcrumbs;
 
@@ -36,6 +37,7 @@ $baseUrl = $asset->baseUrl;
             ]) ?>
         </section>
         <div class="row">
+            <?= Alert::widget() ?>
             <?= $this->render('content', ['content'=>$content]) ?>
             <div class="footer">
                 <div class="pull-right">
