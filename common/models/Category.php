@@ -90,7 +90,7 @@ class Category extends BaseActiveRecord
      * @param int $level
      * @return array
      */
-    static public function unlimitedForLevel ($cate, $html = '--', $shuffix = '|', $pid = null, $level = 0) {
+    static public function unlimitedForLevel ($cate, $html = '──', $shuffix = '┤', $pid = null, $level = 0) {
         $arr = array();
         foreach ($cate as $v){
             if($v['pid'] == $pid){

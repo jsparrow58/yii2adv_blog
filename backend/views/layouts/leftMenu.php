@@ -40,6 +40,7 @@ use yii\helpers\Url;
             <li class="active">
                 <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">文章管理</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
+                    <li><a href="<?= Url::to(['category/index'])?>">栏目管理</a></li>
                     <li><a href="<?= Url::to(['post/index']) ?>">文章列表</a>
                     </li>
                     <li><a href="<?= Url::to(['post/create']) ?>">新建文章</a>

@@ -13,5 +13,10 @@ use yii\base\Model;
 
 class BaseModel extends Model
 {
+    const SCENARIO_CREATE = 'create';
+    const SCENARIO_UPDATE = 'update';
 
+    public function getIsNewRecord() {
+        return $this->getScenario() === self::SCENARIO_CREATE;
+    }
 }

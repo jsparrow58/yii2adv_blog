@@ -23,9 +23,6 @@ class CategoryForm extends BaseModel
     public $description;
     public $position;
 
-    const SCENARIO_CREATE = 'create';
-    const SCENARIO_UPDATE = 'update';
-
     public function rules()
     {
         return [
