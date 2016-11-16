@@ -38,6 +38,11 @@ class Post extends BaseActiveRecord
         return '{{%post}}';
     }
 
+    public static function findById($id)
+    {
+        return static::findOne(['id'=>$id]);
+    }
+
     /**
      * @inheritdoc
      */

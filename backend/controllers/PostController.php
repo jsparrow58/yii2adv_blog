@@ -27,6 +27,12 @@ class PostController extends BaseController
 
     public function actionCreate() {
         $model = new PostForm();
+        $model->setScenario(PostForm::SCENARIO_CREATE);
+        if($model->load(\Yii::$app->request->post())) {
+            if(!$model->create()) {
+
+            }
+        }
         return $this->render('create', ['model'=>$model]);
     }
 }

@@ -1,13 +1,14 @@
 <?php
 /* @var $this yii\web\View */
 
+use yii\bootstrap\Html;
+
 $this->title = '文章管理';
 
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<h1>post/index</h1>
-
-<p>
-    You may change the content of this page by modifying
-    the file <code><?= __FILE__; ?></code>.
-</p>
+<div class="post-index">
+    <p>
+        <?= Html::a('新建文章', ['post/create'], ['class' => 'btn btn-success']) ?>
+    </p>
+</div>
