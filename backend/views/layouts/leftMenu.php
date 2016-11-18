@@ -14,8 +14,8 @@ use yii\helpers\Url;
                     <span><img alt="image" class="img-circle" src="<?= $baseUrl ?>/images/avatar/profile_small.jpg"/></span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="javascript:;">
                         <span class="clear">
-                            <span class="block m-t-xs"><strong class="font-bold">Beaut-zihan</strong></span>
-                            <span class="text-muted text-xs block">超级管理员 <b class="caret"></b></span>
+                            <span class="block m-t-xs"><strong class="font-bold"> <?= Yii::$app->user->identity->username ?></strong></span>
+                            <span class="text-muted text-xs block">个人中心 <b class="caret"></b></span>
                         </span>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">

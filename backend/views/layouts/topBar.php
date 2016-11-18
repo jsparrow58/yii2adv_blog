@@ -95,7 +95,16 @@ use yii\bootstrap\Html;
                 </ul>
             </li>
             <li>
-                <span><?= Html::a('<i class="fa fa-sign-out"></i> 退出', ['/site/logout']); ?></span>
+                <span>
+                    <?php
+                    echo Html::beginForm(['/site/logout'], 'post');
+                    echo Html::submitButton(
+                        '<i class="fa fa-sign-out"></i> 退出',
+                        ['class' => 'btn btn-link logout']
+                    );
+                    echo Html::endForm();
+                    ?>
+                </span>
             </li>
         </ul>
 
