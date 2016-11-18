@@ -22,7 +22,7 @@ class m161111_113947_create_post_table extends Migration
             'id'         => $this->primaryKey(),
             'title'      => $this->string()->notnull()->defaultValue(''),
             'label_img'  => $this->string(),
-            'content'    => $this->text()->notnull()->defaultValue(''),
+            'content'    => $this->text()->notnull(),
             'summary'    => $this->string()->notnull()->defaultValue(''),
             'user_id'    => $this->integer()->notnull(),
             'status'     => $this->smallInteger(1)->notNull()->defaultValue(1)->comment('1、待审核，2、已发布，0、已删除'),

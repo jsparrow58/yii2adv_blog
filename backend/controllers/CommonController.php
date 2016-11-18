@@ -45,7 +45,7 @@ class CommonController extends Controller
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
-        $this->layout = false;
+        $this->layout = false; // 不显示布局
 
         $model = new LoginForm();
 

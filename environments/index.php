@@ -33,7 +33,7 @@ return [
         'path' => 'dev',
         'setWritable' => [
             'backend/runtime',
-            'frontend/backend/web/assets',
+            'frontend/web/backend/assets',
             'frontend/runtime',
             'frontend/web/assets',
         ],
@@ -50,7 +50,7 @@ return [
         'path' => 'prod',
         'setWritable' => [
             'backend/runtime',
-            'frontend/backend/web/assets',
+            'frontend/web/backend/assets',
             'frontend/runtime',
             'frontend/web/assets',
         ],

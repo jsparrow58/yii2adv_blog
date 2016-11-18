@@ -51,7 +51,7 @@ class Post extends BaseActiveRecord
         return [
             [['content', 'user_id', 'created_at', 'updated_at', 'cate_id'], 'required'],
             [['content'], 'string'],
-            [['user_id', 'status', 'created_at', 'updated_at', 'cate_id', 'position'], 'integer'],
+            [['user_id', 'status', 'created_at', 'updated_at', 'cate_id'], 'integer'],
             [['title', 'label_img', 'summary'], 'string', 'max' => 255],
             [['cate_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['cate_id' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
@@ -74,7 +74,6 @@ class Post extends BaseActiveRecord
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'cate_id' => 'Cate ID',
-            'position' => 'Position',
         ];
     }
 

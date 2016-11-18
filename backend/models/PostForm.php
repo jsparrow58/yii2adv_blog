@@ -22,7 +22,18 @@ class PostForm extends BaseModel
     public $label_img;
     public $tags;
 
-    private $_post = false;
+    private $_article = false;
+
+    public function findById($id)
+    {
+        $article = $this->getArticle($id);
+        if($article) {
+            $this->setAttributes($article->getAttributes());
+            return true;
+        }
+        return false;
+    }
+
 
     /**
      * @return array
@@ -54,20 +65,67 @@ class PostForm extends BaseModel
 
     public function create()
     {
-        $_post = $this->getPost();
+        if( $this->validate() ) {
+            $article = $this->getArticle();
+            try {
+                $article->setAttributes($this->getAttributes());
+                $article->user_id = \Yii::$app->user->identity->getId();
+                $article->summary = $this->getSummary();
+                $article->created_at = time();
+                $article->updated_at = time();
+                $article->status = Post::IS_VALID; //后台发布的文章是，已经审核完成的
+                // TODO: 添加tags信息到数据库中
+                if( $article->save() ) {
+                    $this->id = $article->id;
+                    return true;
+                }
+                throw new Exception('数据库保存，发生异常');
+            } catch (Exception $exception) {
+                \Yii::$app->session->setFlash('error', $exception->getMessage());
+                return false;
+            }
+        } else {
+            \Yii::$app->session->setFlash('error', '发生未知的错误');
+        }
     }
 
-    private function getPost()
+    public function update($id)
     {
-        $scenario = $this->getScenario();
-        if($scenario === self::SCENARIO_CREATE) {
-            $this->_post = new Post();
-        } elseif ($scenario === self::SCENARIO_UPDATE) {
-            $this->_post = Post::findById($this->id);
+        if ( $this->validate() ) {
+            try {
+                $article = $this->getArticle($id);
+                $article->setAttributes($this->getAttributes());
+                $article->summary = $this->getSummary();
+                $article->updated_at = time();
+                if( $article->save() ) {
+                    return true;
+                }
+                throw  new Exception('数据库保存，发生异常');
+            }catch (Exception $exception) {
+                \Yii::$app->session->setFlash('error', $exception->getMessage());
+                return false;
+            }
+        } else {
+            \Yii::$app->session->setFlash('error', '发生未知的错误');
+        }
+
+    }
+
+    private function getArticle($id=null)
+    {
+        if(!isset($id) || empty($id)) {
+            $this->_article = new Post();
+        } elseif (isset($id) && !empty($id)) {
+            $this->_article = Post::findById($id);
         } else {
             throw new Exception('发现未知的错误');
         }
 
-        return $this->_post;
+        return $this->_article;
+    }
+
+    private function getSummary()
+    {
+        return '这里是一些文章的summary信息';
     }
 }

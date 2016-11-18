@@ -35,9 +35,10 @@ $baseUrl = $asset->baseUrl;
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
                 'itemTemplate' => '<li><i class="fa fa-dashboard"></i> {link}</li>',
             ]) ?>
+            <?= Alert::widget() ?>
         </section>
         <div class="row">
-            <?= Alert::widget() ?>
+
             <?= $this->render('content', ['content'=>$content]) ?>
             <div class="footer">
                 <div class="pull-right">
