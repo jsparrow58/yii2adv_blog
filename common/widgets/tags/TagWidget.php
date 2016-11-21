@@ -38,7 +38,7 @@ class TagWidget extends InputWidget
     protected function registerClientScript()
     {
          TagAsset::register($this->view);
-         $script = '$(function() {$("#select6").select2({ tags: true });});';
+         $script = '$(function() {$("#select6").select2({ tags: true, tokenSeparators: [",", " "] });});';
          $this->view->registerJs($script, View::POS_END);
     }
 }
