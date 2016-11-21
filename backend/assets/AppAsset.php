@@ -21,7 +21,7 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
 //        '//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js',
-        '//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js',
+//        '//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js',
         'static/bootstrap/js/bootstrap.min.js',
 
 //        '//apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js',

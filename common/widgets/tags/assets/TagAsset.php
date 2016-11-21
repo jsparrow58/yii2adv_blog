@@ -29,6 +29,6 @@ class TagAsset extends AssetBundle
      */
     public function init()
     {
-        $this->sourcePath = (dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR . 'statics';
+        $this->sourcePath = (dirname(dirname(__FILE__))) . DIRECTORY_SEPARATOR . 'statics';
     }
 }
